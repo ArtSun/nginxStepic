@@ -1,6 +1,9 @@
-from re import sub
-
-def app(environ, start_response):
-    output = sub('&', '\n', environ.get('QUERY_STRING', ''))
+def application(environ, start_response):
+    qs=environ.get('QUERY_STRING')
+    qs=qs.split('&')
+    resp=''
+    for k in qs:
+    	resp=resp+'\n'+k
+    resp=resp+'\n'
     start_response('200 OK', [('Content-Type', 'text/plain')])
-    return iter([str.encode(output)])
+    return [resp.encode('utf-8')]

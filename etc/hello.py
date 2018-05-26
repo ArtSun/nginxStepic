@@ -1,2 +1,2 @@
-pythonpath = '/home/bix/web'
-bind = '0.0.0.0:8080'
+workers = max_workers()
+bind = "0.0.0.0:8080"
